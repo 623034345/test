@@ -13,28 +13,29 @@
 <script>
   function getPerimisson()
   {
-    const params = {
-        type: 'camera'
-    };
-
-      window.commonBridgeChannel.getPermissionStatus(params).then(res => {
-          console.log(res);
-          alert(res);
-      }).catch(err => {
-          console.log(err);
-          alert('获取摄像头失败');
-      });
     const params1 = {
         type: 'audio'
     };
 
       window.commonBridgeChannel.getPermissionStatus(params1).then(res => {
           console.log(res);
-          alert(res);
+            const params = {
+                type: 'camera'
+                };
+
+            window.commonBridgeChannel.getPermissionStatus(params).then(res => {
+                console.log(res);
+                alert(res);
+            }).catch(err => {
+                console.log(err);
+                alert('获取摄像头失败');
+            });          
       }).catch(err => {
           console.log(err);
           alert('获取麦克风失败');
       });
+    
+
   }
   function getMedia()
   {
