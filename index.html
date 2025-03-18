@@ -14,7 +14,7 @@
   function getPerimisson()
   {
     const params = {
-      permissionType: 'camera'
+        type: 'camera'
     };
 
       window.commonBridgeChannel.getPermissionStatus(params).then(res => {
@@ -25,7 +25,7 @@
           alert('获取摄像头失败');
       });
     const params1 = {
-      permissionType: 'audio'
+        type: 'audio'
     };
 
       window.commonBridgeChannel.getPermissionStatus(params1).then(res => {
