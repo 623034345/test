@@ -1,0 +1,53 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<video id="video" width="500px" height="500px" autoplay="autoplay"></video>
+<canvas id="canvas" width="500px" height="500px"></canvas>
+<br>
+<input type="button" width="200px" title="HTML5摄像头" value="开启摄像头" onclick="getMedia()"/>
+<input type="button" width="200px" title="获取权限" value="开启摄像头" onclick="getPerimisson()"/>
+<script>
+  function getPerimisson()
+  {
+    const params = {
+      permissionType: 'camera'
+    };
+
+      window.commonBridgeChannel.getPermissionStatus(params).then(res => {
+          console.log(res);
+      }).catch(err => {
+          console.log(err);
+      });
+    const params1 = {
+      permissionType: 'audio'
+    };
+
+      window.commonBridgeChannel.getPermissionStatus(params1).then(res => {
+          console.log(res);
+      }).catch(err => {
+          console.log(err);
+      });
+  }
+  function getMedia()
+  {
+    let constraints = {
+      video: {width: 500, height: 500},
+      audio: false
+    };
+    // 获取video摄像头区域
+    let video = document.getElementById("video");
+    // 返回的Promise对象
+    let promise = navigator.mediaDevices.getUserMedia(constraints);
+    // then()异步，调用MediaStream对象作为参数
+    promise.then(function (MediaStream) {
+      video.srcObject = MediaStream;
+      video.play();
+    });
+  }
+</script>
+</body>
+</html>
