@@ -10,11 +10,28 @@
 <br>
 <input type="button" width="200px" title="HTML5摄像头" value="开启摄像头" onclick="getMedia()"/>
 <input type="button" width="200px" title="获取权限" value="获取权限" onclick="getPerimisson()"/>
+<input type="button" width="200px" title="获取麦克风权限" value="获取麦克风权限" onclick="getMicrophone()"/>
 <script>
   function getPerimisson()
   {
     const params = {
                 type: 'camera'
+                };
+
+            window.commonBridgeChannel.getPermissionStatus(params).then(res => {
+                console.log(res);
+                alert(res);
+            }).catch(err => {
+                console.log(err);
+                alert('获取摄像头失败');
+            });        
+    
+
+  }
+  function getMicrophone()
+  {
+    const params = {
+                type: 'microphone'
                 };
 
             window.commonBridgeChannel.getPermissionStatus(params).then(res => {
