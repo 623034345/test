@@ -13,13 +13,7 @@
 <script>
   function getPerimisson()
   {
-    const params1 = {
-        type: 'audio'
-    };
-
-      window.commonBridgeChannel.getPermissionStatus(params1).then(res => {
-          console.log(res);
-            const params = {
+    const params = {
                 type: 'camera'
                 };
 
@@ -29,11 +23,7 @@
             }).catch(err => {
                 console.log(err);
                 alert('获取摄像头失败');
-            });          
-      }).catch(err => {
-          console.log(err);
-          alert('获取麦克风失败');
-      });
+            });        
     
 
   }
